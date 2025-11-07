@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Excel Salary Dashboard</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<div id="wrapper">
+
+				<div id="main">
+						<div class="inner">
+
+							<header id="header">
+								<div class="inner">
+									<a href="index.html" class="image avatar"><img src="projects/Excel-Salary-Dashboard/1_Salary_Dashboard.png" alt="Excel Dashboard" /></a>
+									<h1><strong>Excel Salary
+										<br> Dashboard</strong><br>
+										</h1>
+										<h4>
+											<p></p>
+										</h4>
+											<ul class="icons">
+										<li><a href="https://github.com/Suhail-khan-91/Data-Science-Salary-Dashboard-.git" class="icon brands fa-github"><span class="label">Github</span> Github Link</a></li>
+									</ul>
+										</h4>
+								</div>
+							</header>
+
+							<section>
+									<header class="main">
+										<h1>Excel Salary Dashboard</h1>
+									</header>
+
+									<div class="center">
+										<img class="img" src="projects/Excel-Salary-Dashboard/1_Salary_Dashboard_Final_Dashboard.gif" alt="Excel Dashboard GIF" style="width:100%;">
+									</div>
+
+									<hr class="major" />
+
+									<h2>Introduction</h2>
+									<p>This data jobs salary dashboard was created to help job seekers investigate salaries for their desired jobs and ensure they are being adequately compensated. </p>
+									<p>The data is from my Excel course, which provides a foundation in analyzing data using this powerful tool. The data contains detailed information on job titles, salaries, locations, and essential skills that are presented here.</p>
+
+									<h3>Dashboard File</h3>
+									<p><a href="projects/Excel-Salary-Dashboard/1_Salary_Dashboard.xlsx">My final dashboard is in 1_Salary_Dashboard.xlsx</a>.</p>
+
+									<h3>Excel Skills Used</h3>
+									<ul>
+										<li><strong>📉 Charts</strong></li>
+										<li><strong>🧮 Formulas and Functions</strong></li>
+										<li><strong>❎ Data Validation</strong></li>
+									</ul>
+
+									<h3>Data Jobs Dataset</h3>
+									<p>The dataset used for this project contains real-world data science job information from 2023.</p>
+									<ul>
+										<li><a href="projects/Excel-Salary-Dashboard/data_jobs_salary_all.xlsx">Download Raw Data (All)</a></li>
+										<li><a href="projects/Excel-Salary-Dashboard/data_jobs_salary_monthly.xlsx">Download Raw Data (Monthly)</a></li>
+									</ul>
+									
+									<hr class="major" />
+
+									<h2>Dashboard Build</h2>
+
+									<h3>📉 Charts</h3>
+									<h4>📊 Data Science Job Salaries - Bar Chart</h4>
+									<div class="center">
+										<img src="projects/Excel-Salary-Dashboard/1_Salary_Dashboard_Chart1.png" width="850" height="550" alt="Salary Dashboard Chart1">
+									</div>
+									<br>
+									<ul>
+										<li>🛠️ <strong>Excel Features:</strong> Utilized bar chart feature (with formatted salary values) and optimized layout for clarity.</li>
+										<li>🎨 <strong>Design Choice:</strong> Horizontal bar chart for visual comparison of median salaries.</li>
+										<li>📉 <strong>Data Organization:</strong> Sorted job titles by descending salary for improved readability.</li>
+										<li>💡 <strong>Insights Gained:</strong> This enables quick identification of salary trends, noting that Senior roles and Engineers are higher-paying than Analyst roles.</li>
+									</ul>
+
+									<h4>🗺️ Country Median Salaries - Map Chart</h4>
+									<div class="center">
+										<img src="projects/Excel-Salary-Dashboard/1_Salary_Dashboard_Country_Map.gif" alt="Country Map GIF">
+									</div>
+									<br>
+									<ul>
+										<li>🛠️ <strong>Excel Features:</strong> Utilized Excel's map chart feature to plot median salaries globally.</li>
+										<li>🎨 <strong>Design Choice:</strong> Color-coded map to visually differentiate salary levels across regions.</li>
+										<li>📊 <strong>Data Representation:</strong> Plotted median salary for each country with available data.</li>
+										<li>👁️ <strong>Visual Enhancement:</strong> Improved readability and immediate understanding of geographic salary trends.</li>
+										<li>💡 <strong>Insights Gained:</strong> Enables quick grasp of global salary disparities and highlights high/low salary regions.</li>
+									</ul>
+
+									<h3>🧮 Formulas and Functions</h3>
+									
+									<h4>💰 Median Salary by Job Titles</h4>
+<pre><code class="language-excel">
+=MEDIAN(
+IF(
+    (jobs[job_title_short]=A2)*
+    (jobs[job_country]=country)*
+    (ISNUMBER(SEARCH(type,jobs[job_schedule_type])))*
+    (jobs[salary_year_avg]<>0),
+    jobs[salary_year_avg]
+)
+)
+</code></pre>
+									<ul>
+										<li>🔍 <strong>Multi-Criteria Filtering:</strong> Checks job title, country, schedule type, and excludes blank salaries.</li>
+										<li>📊 <strong>Array Formula:</strong> Utilizes `MEDIAN()` function with nested `IF()` statement to analyze an array.</li>
+										<li>🎯 <strong>Tailored Insights:</strong> Provides specific salary information for job titles, regions, and schedule types.</li>
+										<li><strong>🔢 Formula Purpose:</strong> This formula populates the table below, returning the median salary based on job title, country, and type specified.</li>
+									</ul>
+									<p>🍽️ Background Table</p>
+									<div class="center">
+										<img class="img" src="projects/Excel-Salary-Dashboard/1_Salary_Dashboard_Screenshot1.png" alt="Background Table 1">
+									</div>
+									<p>📉 Dashboard Implementation</p>
+									<div class="center">
+										<img src="projects/Excel-Salary-Dashboard/1_Salary_Dashboard_Job_Title.png" width="400" height="500" alt="Salary Dashboard Title">
+									</div>
+									
+									<br>
+
+									<h4>⏰ Count of Job Schedule Type</h4>
+<pre><code class="language-excel">
+=FILTER(J2#,(NOT(ISNUMBER(SEARCH("and",J2#))+ISNUMBER(SEARCH(",",J2#))))*(J2#<>0))
+</code></pre>
+									<ul>
+										<li>🔍 <strong>Unique List Generation:</strong> This Excel formula below employs the `FILTER()` function to exclude entries containing "and" or commas, and omit zero values.</li>
+										<li><strong>🔢 Formula Purpose:</strong> This formula populates the table below, which gives us a list of unique job schedule types.</li>
+									</ul>
+									<p>🍽️ Background Table</p>
+									<div class="center">
+										<img class="img" src="projects/Excel-Salary-Dashboard/1_Salary_Dashboard_Screenshot2.png" alt="Background Table 2">
+									</div>
+									<p>📉 Dashboard Implementation:</p>
+									<div class="center">
+										<img src="projects/Excel-Salary-Dashboard/1_Salary_Dashboard_Type.png" width="350" height="500" alt="Salary Dashboard Type">
+									</div>
+
+									<h3>❎ Data Validation</h3>
+									<h4>🔍 Filtered List</h4>
+									<ul>
+										<li>🔒 <strong>Enhanced Data Validation:</strong> Implementing the filtered list as a data validation rule under the `Job Title`, `Country`, and `Type` option in the Data tab ensures:
+											<ul>
+												<li>🎯 User input is restricted to predefined, validated schedule types</li>
+												<li>🚫 Incorrect or inconsistent entries are prevented</li>
+												<li>👥 Overall usability of the dashboard is enhanced</li>
+											</ul>
+										</li>
+									</ul>
+									<div class="center">
+										<img src="projects/Excel-Salary-Dashboard/1_Salary_Dashboard_Data_Validation.gif" width="425" height="400" alt="Salary Dashboard Data Validation">
+									</div>
+
+									<hr class="major" />
+
+									<h2>Conclusion</h2>
+									<p>I created this dashboard to showcase insights into salary trends across various data-related job titles. Utilizing data from my Excel course, this dashboard allows users to make informed decisions about their career paths. Exploring the functionalities to understand how location and job type influence salaries.</p>
+
+									<hr class="major" />
+									
+									<h3>Project Links</h3>
+									<ul class="icons">
+										<li><a href="https://github.com/Suhail-khan-91/Data-Science-Salary-Dashboard-.git" class="icon brands fa-github"><span class="label">Github</span> Github Link</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="index.html" class="button">Back</a></li>
+									</ul>
+								</section>
+
+						</div>
+					</div>
+			</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+			<script>hljs.highlightAll();</script>
+
+	</body>
+</html>
